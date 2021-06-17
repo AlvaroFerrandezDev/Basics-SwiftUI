@@ -12,4 +12,5 @@ struct Programmer {
     let name: String
     let languanges: String
     let avatar: Image
+    var isFavorite: Bool
 }

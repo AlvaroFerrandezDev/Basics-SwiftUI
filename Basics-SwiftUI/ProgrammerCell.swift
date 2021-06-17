@@ -14,8 +14,7 @@ struct ProgrammerCell: View {
         HStack {
             programmer.avatar
                 .resizable()
-                .frame(width: 40, height: 40)
-                .padding(10)
+                .frame(width: 30, height: 30)
 
             VStack(alignment: .leading) {
                 Text(programmer.name)
@@ -25,14 +24,22 @@ struct ProgrammerCell: View {
             }
 
             Spacer()
-        }.padding()
+
+            if programmer.isFavorite {
+                Image(systemName: "star.fill")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.yellow)
+            }
+
+        }
     }
 }
 
 struct ProgrammerCell_Previews: PreviewProvider {
     static var previews: some View {
-        let mockProgrammer = Programmer(id: 01, name: "Fernando Alonso", languanges: "Swift", avatar: Image(systemName: "person.fill"))
+        let mockProgrammer = Programmer(id: 01, name: "Fernando Alonso", languanges: "Swift", avatar: Image(systemName: "person.fill"), isFavorite: true)
         ProgrammerCell(programmer: mockProgrammer)
-            .previewLayout(.fixed(width: 400, height: 60))
+            .previewLayout(.fixed(width: 400, height: 50))
     }
 }
